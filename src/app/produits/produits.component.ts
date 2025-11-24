@@ -1,18 +1,25 @@
-import { NgFor } from '@angular/common';
-import { Component } from '@angular/core';
+import { CommonModule, NgFor } from '@angular/common';
+import { Component, OnInit } from '@angular/core';
 import { ɵEmptyOutletComponent } from "@angular/router";
+import { Produit } from '../model/produit.model';
+import { ProduitService } from '../services/produit.service';
 
 @Component({
   selector: 'app-produits',
   standalone: true,
-  imports: [NgFor, ɵEmptyOutletComponent],
+  imports: [NgFor, ɵEmptyOutletComponent,CommonModule],
   templateUrl: './produits.component.html',
   styleUrl: './produits.component.css'
 })
-export class ProduitsComponent {
-  produits : string[];
-  constructor(){
-    this.produits =["PC ASUS3","3IMPRIMANTE","tablette samsung"];
+
+export class ProduitsComponent implements OnInit{
+  produits? : Produit[]; //tableau de produit
+
+  constructor(private produitService: ProduitService){
+  }
+
+  ngOnInit(): void {
+    this.produits = this.produitService.listeProduits();      
   }
 
 }
