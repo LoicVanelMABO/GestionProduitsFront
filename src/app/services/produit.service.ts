@@ -5,6 +5,21 @@ import { Produit } from '../model/produit.model';
   providedIn: 'root'
 })
 export class ProduitService {
+  modifierProduit(produit: Produit) {
+    throw new Error('Method not implemented.');
+  }
+
+  suppProduit(produit: Produit) {
+    const index = this.produits.indexOf(produit,0);
+    if(index>-1){
+      let conf = confirm("Etes-vous sûr ?");
+      if(conf){
+        this.produits.splice(index,1);        
+      }
+    }else{
+      console.log("produit non trouvé");
+    }
+  }
   produits:Produit[];
 
   constructor() {
