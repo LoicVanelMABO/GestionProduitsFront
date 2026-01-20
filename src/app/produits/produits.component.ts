@@ -13,6 +13,16 @@ import { ProduitService } from '../services/produit.service';
 })
 
 export class ProduitsComponent implements OnInit{
+ModifierProduit(produit: Produit) {
+  this.produitService.suppProduit(produit);
+    alert('Modification du produit ' + produit.nomProduit);
+    this.produitService.modifierProduit(produit);
+  }
+
+  supprimerProduit(produit: Produit) {
+    this.produitService.suppProduit(produit);
+  }
+  
   produits? : Produit[]; //tableau de produit
 
   constructor(private produitService: ProduitService){

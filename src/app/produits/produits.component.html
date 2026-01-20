@@ -2,7 +2,7 @@
     <div class="card shadow mb-4">
         <div class="card-body">
             <table class="table table-striped-columns">
-                @if (produits.length != 0) {
+                @if (produits && produits.length > 0) {
                 <thead>
                     <tr>
                         <th>N°</th>
@@ -10,6 +10,7 @@
                         <th>Nom des produits</th>
                         <th>Prix</th>
                         <th>Date</th>
+                        <th>Actions</th>
                     </tr>
                 </thead>
                 }
@@ -23,6 +24,11 @@
                         <td>{{produit.nomProduit}}</td>
                         <td>{{produit.prixProduit}}</td>
                         <td>{{produit.dateCreation | date:'dd/MM/yyyy'}}</td>
+                        <td>
+                            <a (click)="supprimerProduit(produit)" class="btn btn-danger mx-auto">Supprimer</a>
+                            <a (click)="ModifierProduit(produit)" class="btn btn-warning">Modifier</a>
+                        </td>
+                        
                     </tr>
                 </tbody>
                 @if ($last) {

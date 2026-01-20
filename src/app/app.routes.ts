@@ -6,5 +6,6 @@ export const routes: Routes = [
     {path:"produits", component:ProduitsComponent},
     //{path:"produitsh", loadComponent: () => import('./produits/produits.component')}
     {path:"add-produit", component:AddProduitComponent},
+    //{path:"",component:ProduitsComponent},
     {path:"",component:ProduitsComponent}
 ];
