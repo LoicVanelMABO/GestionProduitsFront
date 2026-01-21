@@ -22,19 +22,29 @@ import { ProduitService } from '../services/produit.service';
 
 export class ProduitsComponent implements OnInit{
 <<<<<<< HEAD
+<<<<<<< HEAD
   
   ModifierProduit(produit: Produit) {
     //this.produitService.suppProduit(produit);
     alert('Modification du produit ' + produit.nomProduit);
     //this.produitService.modifierProduit(produit);
+=======
+ModifierProduit(produit: Produit) {
+  this.produitService.suppProduit(produit);
+    alert('Modification du produit ' + produit.nomProduit);
+    this.produitService.modifierProduit(produit);
+>>>>>>> 871cdbf (supp elt du tableau)
   }
 
   supprimerProduit(produit: Produit) {
     this.produitService.suppProduit(produit);
   }
+<<<<<<< HEAD
 
 =======
 >>>>>>> 903197d (add produit & form add produit)
+=======
+>>>>>>> 871cdbf (supp elt du tableau)
   produits? : Produit[]; //tableau de produit
 
   constructor(private produitService: ProduitService){
