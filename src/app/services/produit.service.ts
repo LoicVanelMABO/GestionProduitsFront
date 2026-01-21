@@ -45,12 +45,6 @@ export class ProduitService {
     return this.produit;
   }
 
-  /*updaterProduit(produit: Produit){
-    this.produit = this.consulterProduit(produit.idProduit);
-    this.suppProduit(this.produit);
-    this.ajouterProduit(produit);
-  }*/
-
   updateProduit(prod: Produit) {
     const index = this.produits.indexOf(prod, 0);
     if (index > -1) {
