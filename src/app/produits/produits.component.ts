@@ -22,7 +22,6 @@ ModifierProduit(produit: Produit) {
   supprimerProduit(produit: Produit) {
     this.produitService.suppProduit(produit);
   }
-  
   produits? : Produit[]; //tableau de produit
 
   constructor(private produitService: ProduitService){
