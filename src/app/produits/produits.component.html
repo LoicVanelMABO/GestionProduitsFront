@@ -26,7 +26,7 @@
                         <td>{{produit.dateCreation | date:'dd/MM/yyyy'}}</td>
                         <td>
                             <a (click)="supprimerProduit(produit)" class="btn btn-danger mx-auto">Supprimer</a>
-                            <a (click)="ModifierProduit(produit)" class="btn btn-warning">Modifier</a>
+                            <a [routerLink]="['/updateProduit',produit.idProduit]" class="btn btn-warning">Modifier</a>
                         </td>
                         
                     </tr>
