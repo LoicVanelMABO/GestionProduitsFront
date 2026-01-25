@@ -15,6 +15,14 @@
             <label>Prix Produit</label>
             <input type="number" [(ngModel)]="currentProduit.prixProduit" name="prixProduit" class="form-control">
         </div>
+        <div class="col-sm-2 col-md-2 col-lg-2">
+            <label>Categorie Produit</label>
+            <select [(ngModel)]="updateCatId" class="form-control" name="categorie">
+                @for (cat of categorieTabs; track cat.idCat) {
+                <option [value]="cat.idCat" [selected]="cat.idCat === currentProduit.categorie?.idCat">{{cat.nomCategorie}}</option>
+                }
+            </select>
+        </div>
         <div class="col-sm-4 col-md-4 col-lg-4">
             <label>Date Produit</label>
             <input type="date" [ngModel]="currentProduit.dateCreation | date: 'yyyy-MM-dd'" (ngModelChange)="currentProduit.dateCreation=$event" name="dateCreation" class="form-control">
