@@ -16,17 +16,21 @@ import { Categorie } from '../model/categorie.model';
 export class UpdateProduitComponent implements OnInit {
 
   categorieTabs!: Categorie[];
-  newCatId!: Categorie;
+  updateCatId!: number;
+  newCategorie!: Categorie;
   currentProduit!: Produit;
   constructor(private produitService: ProduitService, private activatedRoute: ActivatedRoute, private router: Router) { }
 
   ngOnInit(): void {
+    this.categorieTabs = this.produitService.listCategories();
     let id = this.activatedRoute.snapshot.params['id']
     this.currentProduit = this.produitService.consulterProduit(id);
-    this.categorieTabs = this.produitService.listCategories();
+    this.updateCatId = this.currentProduit.categorie!.idCat;
   }
 
   updateProduit() {
+    this.newCategorie = this.produitService.consulterCategorie(this.updateCatId);
+    this.currentProduit.categorie = this.newCategorie;
     this.produitService.updateProduit(this.currentProduit);
     this.router.navigate(['produits']);
   }
