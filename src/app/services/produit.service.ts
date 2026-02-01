@@ -8,7 +8,7 @@ import { Categorie } from '../model/categorie.model';
 export class ProduitService {
   produits: Produit[];
   produit!: Produit;
-  categories!: Categorie[];
+  //categories!: Categorie[];
   modifierProduit(produit: Produit) {
     throw new Error('Method not implemented.');
   }
@@ -26,26 +26,26 @@ export class ProduitService {
   }
 
   constructor() {
-    this.categories = [
+    /* this.categories = [
       { idCat: 1, nomCategorie: "Ordinateurs" },
       { idCat: 2, nomCategorie: "Imprimantes" }
-    ];
+    ]; */
 
     this.produits = [
-      { idProduit: 1, nomProduit: "PC ASUS3 petit pays", prixProduit: 600, dateCreation: new Date("12/23/2011"), categorie: this.categories[0] },
-      { idProduit: 2, nomProduit: "3IMPRIMANTE", prixProduit: 150, dateCreation: new Date("10/14/2025") , categorie: this.categories[1]},
-      { idProduit: 3, nomProduit: "tablette", prixProduit: 150, dateCreation: new Date("9/12/2025"), categorie: this.categories[0] },
-      { idProduit: 4, nomProduit: "PC samsung", prixProduit: 500, dateCreation: new Date("4/13/2025"), categorie: this.categories[1] },
+      { idProduit: 1, nomProduit: "PC ASUS3 petit pays", prixProduit: 600, dateCreation: new Date("12/23/2011"), categorie: { idCat: 1, nomCategorie: "Ordinateurs" } },
+      { idProduit: 2, nomProduit: "3IMPRIMANTE", prixProduit: 150, dateCreation: new Date("10/14/2025") , categorie: { idCat: 1, nomCategorie: "Ordinateurs" }},
+      { idProduit: 3, nomProduit: "tablette", prixProduit: 150, dateCreation: new Date("9/12/2025"), categorie: { idCat: 1, nomCategorie: "Ordinateurs" } },
+      { idProduit: 4, nomProduit: "PC samsung", prixProduit: 500, dateCreation: new Date("4/13/2025"), categorie: { idCat: 1, nomCategorie: "Ordinateurs" } },
     ];
   }
 
-  listCategories(): Categorie[]{
+  /* listCategories(): Categorie[]{
     return this.categories;
   }
 
   consulterCategorie(idCat: number) :Categorie{
     return this.categories.find(c=>c.idCat==idCat)!
-  }
+  } */
 
   listeProduits(): Produit[] {
     return this.produits;
