@@ -24,13 +24,13 @@ export class AddProduitComponent implements OnInit {
   }
 
   ngOnInit():void{
-    this.categorieTabs = this.produitService.listCategories()
+    //this.categorieTabs = this.produitService.listCategories()
   }
   
   addProduit(){
     //alert(this.newIdCat);
-    this.newCategorie = this.produitService.consulterCategorie(this.newIdCat!)
-    this.newProduit.categorie = this.newCategorie;
+    //this.newCategorie = this.produitService.consulterCategorie(this.newIdCat!)
+    //this.newProduit.categorie = this.newCategorie;
     this.produitService.ajouterProduit(this.newProduit);
     this.message = "l'article "+this.newProduit.nomProduit+" a bien été ajouté."
     this.router.navigate(['produits']);

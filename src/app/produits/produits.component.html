@@ -10,7 +10,7 @@
                         <th>Nom des produits</th>
                         <th>Prix</th>
                         <th>Date</th>
-                        <th>Catégorie</th>
+                        <!-- <th>Catégorie</th> -->
                         <th>Actions</th>
                     </tr>
                 </thead>
@@ -25,7 +25,7 @@
                         <td>{{produit.nomProduit}}</td>
                         <td>{{produit.prixProduit}}</td>
                         <td>{{produit.dateCreation | date:'dd/MM/yyyy'}}</td>
-                        <td>{{produit.categorie?.nomCategorie}}</td>
+                        <!-- <td>{{produit.categorie?.nomCategorie}}</td> -->
                         <td>
                             <a (click)="supprimerProduit(produit)" class="btn btn-danger mx-auto">Supprimer</a>
                             <a [routerLink]="['/updateProduit',produit.idProduit]" class="btn btn-warning">Modifier</a>
