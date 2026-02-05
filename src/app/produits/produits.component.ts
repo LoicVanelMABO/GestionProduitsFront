@@ -21,14 +21,16 @@ export class ProduitsComponent implements OnInit{
   supprimerProduit(produit: Produit) {
     this.produitService.suppProduit(produit);
   }
-
   produits? : Produit[]; //tableau de produit
 
   constructor(private produitService: ProduitService){
   }
 
   ngOnInit(): void {
-    this.produits = this.produitService.listeProduits();      
+    this.produitService.listeProduits().subscribe(prods => {
+      console.log(prods);
+      this.produits = prods;
+    });
   }
 
 }
