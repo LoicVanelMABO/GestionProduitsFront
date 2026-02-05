@@ -31,9 +31,11 @@ export class AddProduitComponent implements OnInit {
     //alert(this.newIdCat);
     //this.newCategorie = this.produitService.consulterCategorie(this.newIdCat!)
     //this.newProduit.categorie = this.newCategorie;
-    this.produitService.ajouterProduit(this.newProduit);
-    this.message = "l'article "+this.newProduit.nomProduit+" a bien été ajouté."
-    this.router.navigate(['produits']);
+    this.produitService.ajouterProduit(this.newProduit).subscribe(prod=>{
+      console.log(prod);
+      this.message = "l'article "+this.newProduit.nomProduit+" a bien été ajouté."
+      this.router.navigate(['produits']);
+    });
 
   }
 }
