@@ -18,43 +18,18 @@ export class ProduitService {
   produit!: Produit;
   //categories!: Categorie[];
 
+  constructor(private http: HttpClient) {}
+
   modifierProduit(produit: Produit) {
     throw new Error('Method not implemented.');
   }
 
-  suppProduit(produit: Produit) {
-    const index = this.produits.indexOf(produit, 0);
-    if (index > -1) {
-      let conf = confirm("Etes-vous sûr ?");
-      if (conf) {
-        this.produits.splice(index, 1);
-      }
-    } else {
-      console.log("produit non trouvé");
-    }
+  suppProduit(id: number) : Observable<any> {
+    const url = `${this.apiURL}/deleteProduct/${id}`;
+    alert(url);
+    return this.http.delete(url, httpOptions);
+    //return this.http.put(`${url}`,httpOptions,);
   }
-
-  constructor(private http: HttpClient) {
-    /* this.categories = [
-      { idCat: 1, nomCategorie: "Ordinateurs" },
-      { idCat: 2, nomCategorie: "Imprimantes" }
-    ]; */
-
-    /*this.produits = [
-      { idProduit: 1, nomProduit: "PC ASUS3 petit pays", prixProduit: 600, dateCreation: new Date("12/23/2011"), categorie: { idCat: 1, nomCategorie: "Ordinateurs" } },
-      { idProduit: 2, nomProduit: "3IMPRIMANTE", prixProduit: 150, dateCreation: new Date("10/14/2025") , categorie: { idCat: 1, nomCategorie: "Ordinateurs" }},
-      { idProduit: 3, nomProduit: "tablette", prixProduit: 150, dateCreation: new Date("9/12/2025"), categorie: { idCat: 1, nomCategorie: "Ordinateurs" } },
-      { idProduit: 4, nomProduit: "PC samsung", prixProduit: 500, dateCreation: new Date("4/13/2025"), categorie: { idCat: 1, nomCategorie: "Ordinateurs" } },
-    ];*/
-  }
-
-  /* listCategories(): Categorie[]{
-    return this.categories;
-  }
-
-  consulterCategorie(idCat: number) :Categorie{
-    return this.categories.find(c=>c.idCat==idCat)!
-  } */
 
   listeProduits(): Observable<Produit[]> {
     return this.http.get<Produit[]>(this.apiURL+'/allProduct');
