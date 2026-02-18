@@ -39,17 +39,15 @@ export class ProduitService {
     return this.http.post<Produit>(this.apiURL+'/createProduct', produit, httpOptions);
   }
 
-  consulterProduit(idProduit: number): Produit {
-    this.produit = this.produits.find(p => p.idProduit == idProduit)!;
-    return this.produit;
+  consulterProduit(idProduit: number): Observable<Produit> {
+    const url = `${this.apiURL}/${idProduit}`;
+    return this.http.get<Produit>(url);
   }
 
   updateProduit(prod: Produit) {
-    const index = this.produits.indexOf(prod, 0);
-    if (index > -1) {
-      this.produits.splice(index, 1);//supp l'ancien produit
-      this.produits.splice(index, 0, prod);//ajout le produit modifié à la même position
-      console.log(this.produits);
-    }
+    const url = `${this.apiURL}/updateProduct`;
+    return this.http.put(url, prod, httpOptions).subscribe(() => {
+      console.log('Produit mis à jour avec succès');
+    });
   }
 }
