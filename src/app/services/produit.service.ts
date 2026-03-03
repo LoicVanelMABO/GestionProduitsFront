@@ -44,10 +44,8 @@ export class ProduitService {
     return this.http.get<Produit>(url);
   }
 
-  updateProduit(prod: Produit) {
+  updateProduit(prod: Produit) :Observable<Produit> {
     const url = `${this.apiURL}/updateProduct`;
-    return this.http.put(url, prod, httpOptions).subscribe(() => {
-      console.log('Produit mis à jour avec succès');
-    });
+    return this.http.put(url, prod, httpOptions);
   }
 }
