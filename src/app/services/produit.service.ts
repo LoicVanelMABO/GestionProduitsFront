@@ -3,16 +3,24 @@ import { Produit } from '../model/produit.model';
 import { Categorie } from '../model/categorie.model';
 import { Observable } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { apiURL } from '../config';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
 };
 
+// Interface pour la réponse API
+interface ApiCategorie {
+  id: number;
+  nom: string;
+  description: string;
+}
+
 @Injectable({
   providedIn: 'root'
 })
 export class ProduitService {
-  apiURL: string = 'http://localhost:8080/produits/Api';
+  apiURL: string = apiURL;
 
   produits!: Produit[];
   produit!: Produit;
@@ -33,6 +41,10 @@ export class ProduitService {
 
   listeProduits(): Observable<Produit[]> {
     return this.http.get<Produit[]>(this.apiURL+'/allProduct');
+  }
+
+  listCategories(): Observable<Categorie[]>{
+    return this.http.get<Categorie[]>(this.apiURL+'/cat');;
   }
 
   ajouterProduit(produit: Produit): Observable<Produit>{

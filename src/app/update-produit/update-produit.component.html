@@ -17,9 +17,9 @@
         </div>
         <div class="col-sm-2 col-md-2 col-lg-2">
             <label>Categorie Produit</label>
-            <select [(ngModel)]="updateCatId" class="form-control" name="categorie">
-                @for (cat of categorieTabs; track cat.idCat) {
-                <option [value]="cat.idCat" [selected]="cat.idCat === currentProduit.categorie?.idCat">{{cat.nomCategorie}}</option>
+            <select id= "idCategorie" [(ngModel)]="updateCatId" class="form-control" name="categorie">
+                @for (cat of categorieTabs; track cat.idCategorie) {
+                <option [value]="cat.idCategorie" >{{cat.nomCategorie}}</option>
                 }
             </select>
         </div>

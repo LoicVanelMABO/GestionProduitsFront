@@ -15,7 +15,7 @@ import { Router } from '@angular/router';
 export class AddProduitComponent implements OnInit {
   categorieTabs!:Categorie[];
   newCategorie!: Categorie;
-  newIdCat!: number;
+  newIdCat: number = 0;
   newProduit = new Produit;
   message?:string;
 
@@ -24,13 +24,18 @@ export class AddProduitComponent implements OnInit {
   }
 
   ngOnInit():void{
-    //this.categorieTabs = this.produitService.listCategories()
+    alert(this.newIdCat);
+    this.produitService.listCategories().subscribe(cats=>{
+      this.categorieTabs = cats;
+    console.log(this.categorieTabs);
+    });
   }
   
   addProduit(){
-    //alert(this.newIdCat);
+    alert(this.newIdCat);
     //this.newCategorie = this.produitService.consulterCategorie(this.newIdCat!)
     //this.newProduit.categorie = this.newCategorie;
+    this.newProduit.categorie = this.categorieTabs.find(cat => cat.idCategorie == this.newIdCat)!;
     this.produitService.ajouterProduit(this.newProduit).subscribe(prod=>{
       console.log(prod);
       this.message = "l'article "+this.newProduit.nomProduit+" a bien été ajouté."
