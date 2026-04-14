@@ -3,7 +3,7 @@ import { Produit } from '../model/produit.model';
 import { Categorie } from '../model/categorie.model';
 import { Observable } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { map } from 'rxjs/operators';
+import { apiURL } from '../config';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -20,7 +20,7 @@ interface ApiCategorie {
   providedIn: 'root'
 })
 export class ProduitService {
-  apiURL: string = 'http://localhost:8080/produits/Api';
+  apiURL: string = apiURL;
 
   produits!: Produit[];
   produit!: Produit;
