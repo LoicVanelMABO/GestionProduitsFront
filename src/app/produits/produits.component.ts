@@ -39,7 +39,6 @@ export class ProduitsComponent implements OnInit{
     if(conf){
       this.produitService.suppProduit(produit.idProduit!).subscribe(() =>{
         this.chargerProduits();
-        //this.router.navigate(['produits']);
       });
     }
   }
