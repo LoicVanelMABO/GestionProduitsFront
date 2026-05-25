@@ -63,4 +63,16 @@ export class ProduitService {
     const url = `${this.apiURL}/updateProduct`;
     return this.http.put(url, prod, httpOptions);
   }
+
+  //recherche par categories
+  rechercheParCategorie(idCat:number):Observable<Produit[]>{
+    const url = `${this.apiURL}/getProByCat/${idCat}`;
+    return this.http.get<Produit[]>(url);
+
+  }
+
+  rechercherParNom(falla:string):Observable<Produit[]>{
+    const url = `${this.apiURL}/getProByName/${falla}`;
+    return this.http.get<Produit[]>(url);
+  }
 }
