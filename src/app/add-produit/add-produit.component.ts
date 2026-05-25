@@ -13,6 +13,7 @@ import { Router } from '@angular/router';
   styleUrl: './add-produit.component.css'
 })
 export class AddProduitComponent implements OnInit {
+  //categorieTabs!:CategorieWrapper._embedded.categories[];
   categorieTabs!:Categorie[];
   newCategorie!: Categorie;
   newIdCat: number = 0;
@@ -24,10 +25,9 @@ export class AddProduitComponent implements OnInit {
   }
 
   ngOnInit():void{
-    alert(this.newIdCat);
-    this.produitService.listCategories().subscribe(cats=>{
-      this.categorieTabs = cats;
-    console.log(this.categorieTabs);
+    this.produitService.listCategories().subscribe(wrapper=>{
+      this.categorieTabs =  wrapper._embedded.categories;
+      console.log(this.categorieTabs);
     });
   }
   

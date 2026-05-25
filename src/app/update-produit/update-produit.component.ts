@@ -28,9 +28,9 @@ export class UpdateProduitComponent implements OnInit {
       this.updateCatId = this.currentProduit.categorie?.idCategorie!;
     });
 
-    this.produitService.listCategories().subscribe(cats=>{
-      this.categorieTabs = cats;
-    });
+    this.produitService.listCategories().subscribe(cats => {
+  this.categorieTabs = cats._embedded.categories;
+});
   }
 
   updateProduit() {
