@@ -49,6 +49,10 @@ export class ProduitService {
     //return this.http.get<Categorie[]>(this.apiURL+'/cat');
     return this.http.get<CategorieWrapper>(environment.apiURLCat);
   }
+  
+  ajoutCategorie(cat:Categorie):Observable<Categorie>{
+    return this.http.post<Categorie>(environment.apiURLCat,cat,httpOptions);
+  }
 
   ajouterProduit(produit: Produit): Observable<Produit>{
     return this.http.post<Produit>(this.apiURL+'/createProduct', produit, httpOptions);

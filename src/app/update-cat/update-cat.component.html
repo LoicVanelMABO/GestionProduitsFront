@@ -1,0 +1,20 @@
+<form >
+    <div [hidden]="add">
+        <label>ID Cat</label>
+        <input disabled type="text" [(ngModel)]="categorie.idCategorie"  name="idCategorie" class="form-control W-25">
+    </div>
+
+    <div>
+        <label>Nom Catégorie</label>
+        <input type="text" [(ngModel)]="categorie.nomCategorie" name="nomCategorie" class="form-control">
+    </div>
+
+    <div>
+        <label>Description Catégorie</label>
+        <input type="text" [(ngModel)]="categorie.descriptionCategorie" name="descriptionCategorie" class="form-control">
+    </div>
+
+    <div class="mt-2">
+        <button type="submit" [disabled]="!categorie.nomCategorie" class="btn btn-success" (click)="saveCat(categorie)">{{add?'Ajouter':'Modifier'}}</button>
+    </div>
+</form>
