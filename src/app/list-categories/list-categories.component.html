@@ -1,0 +1,43 @@
+<div style="margin-top: 1%;" class="container">
+    <div class="col-sm-4 col-md-4 col-lg-4 mb-4">
+        <app-update-cat [categorie]="categorie" [add]="add" (categorieUpdated)="categorieUpdated($event)"></app-update-cat>
+    </div>
+
+    <div class="card shadow mb-4">
+        <div class="card-body">
+            <table class="table table-striped-columns">
+                @if (listCat && listCat.length > 0) {
+                <thead>
+                    <tr>
+                        <th>ID produits</th>
+                        <th>Nom des produits</th>
+                        <th>Description</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                }
+                @for (cat of listCat; track cat.idCategorie; let eltIndex=$index;let nbr=$count; let first=$first;let
+                last = $last) {
+
+                <tbody>
+                    <tr>
+                        <td>{{cat.idCategorie}}</td>
+                        <td>{{cat.nomCategorie}}</td>
+                        <td>{{cat.descriptionCategorie? cat.descriptionCategorie: "No description"}}</td>
+                        <td>
+                            <a (click)="selecta(cat)" class="btn btn-warning mx-auto">Selectionner</a>
+                        </td>
+                    </tr>
+                </tbody>
+                @if ($last) {
+                <h4>Nbombre d'element(s) : {{nbr}}</h4>
+                }
+                }
+
+                @empty {
+                <h3>Aucune categorie trouvée...</h3>
+                }
+            </table>
+        </div>
+    </div>
+</div>
