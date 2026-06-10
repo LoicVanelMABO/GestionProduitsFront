@@ -4,6 +4,7 @@ import { RouterLink } from "@angular/router";
 import { Produit } from '../model/produit.model';
 import { ProduitService } from '../services/produit.service';
 import { Router } from '@angular/router';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-produits',
@@ -16,7 +17,7 @@ import { Router } from '@angular/router';
 export class ProduitsComponent implements OnInit{
   produits? : Produit[]; //tableau de produit
 
-  constructor(private produitService: ProduitService, private router: Router){
+  constructor(private produitService: ProduitService, private router: Router, public authService : AuthService){
   }
 
   ngOnInit(): void {
