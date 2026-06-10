@@ -27,8 +27,10 @@
                         <td>{{produit.dateCreation | date:'dd/MM/yyyy'}}</td>
                         <td>{{produit.categorie?.nomCategorie}}</td>
                         <td>
+                            @if(authService.isAdmin()){
                             <a (click)="supprimerProduit(produit)" class="btn btn-danger mx-auto">Supprimer</a>
                             <a [routerLink]="['/updateProduit',produit.idProduit]" class="btn btn-warning">Modifier</a>
+                            }@else {No Action}
                         </td>
                         
                     </tr>
